@@ -1,0 +1,27 @@
+{
+  "name": "stockified-api",
+  "version": "1.0.0",
+  "description": "<!-- PROJECT SHIELDS --> [![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url] [![LinkedIn][linkedin-shield]][linkedin-url]",
+  "main": "index.js",
+  "scripts": {
+		"migrate": "knex migrate:latest",
+		"rollback": "knex migrate:rollback"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirontoo/stockified.git"
+  },
+  "author": "kirontoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirontoo/stockified/issues"
+  },
+  "homepage": "https://github.com/kirontoo/stockified#readme",
+  "dependencies": {
+    "knex": "^0.21.6",
+    "pg": "^8.4.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
