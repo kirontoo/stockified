@@ -4,6 +4,8 @@
   "description": "<!-- PROJECT SHIELDS --> [![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url] [![LinkedIn][linkedin-shield]][linkedin-url]",
   "main": "index.js",
   "scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run"
@@ -20,10 +22,15 @@
   "homepage": "https://github.com/kirontoo/stockified#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
     "knex": "^0.21.6",
+    "morgan": "^1.10.0",
     "pg": "^8.4.1"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6"
   }
 }
