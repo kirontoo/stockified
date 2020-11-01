@@ -1,34 +1,12 @@
 const Knex = require( 'knex' );
 const dbTableNames = require( '../../src/constants/dbTableNames' );
-
-function addDefaultColumns( table ) {
-	table.timestamps( false, true );
-	table.datetime( 'deleted_at' );
-}
-
-function createNameTable( knex, tableName) {
-	return knex.schema.createTable( tableName, ( table ) => {
-		table.increments().notNullable();
-		table.string( 'name', 254 ).notNullable().unique();
-		addDefaultColumns( table );
-	});
-}
-
-function addIdReference( table, tableName ) {
-	table.integer( `${tableName}_id` )
-		.unsigned()
-		.references( 'id' )
-		.inTable( tableName )
-		.onDelete( 'cascade' );
-}
-
-function addUrlColumn( table, columnName ) {
-	table.string( columnName, 2000 );
-}
-
-function addEmailColumn( table, columnName ) {
-	return table.string( columnName, 254 )
-}
+const {
+	addDefaultColumns,
+	createNameTable,
+	addIdReference,
+	addUrlColumn,
+	addEmailColumn
+} = require( '../../src/lib/dbTableUtils' );
 
 exports.up = async (knex) => {
 
@@ -43,7 +21,8 @@ exports.up = async (knex) => {
 			addDefaultColumns( table );
 		}),
 
-		knex.schema.createTable( dbTableNames.location, ( table ) => {
+		knex.schema.createTable( dbTableNames.inventory_location, ( table ) => {
+			table.increments().notNullable();
 			table.string( 'name' ).notNullable().unique();
 			table.string( 'description', 1000 );
 			addUrlColumn( table, 'image_url' );
@@ -64,7 +43,7 @@ exports.up = async (knex) => {
 		table.string( 'zipcode', 15 ).notNullable();
 		table.float( 'latitude' ).notNullable();
 		table.float( 'longitude' ).notNullable();
-		addIdReference( table, dbTableNames.state );
+		addIdReference( table, dbTableNames.state, false );
 		addIdReference( table, dbTableNames.country );
 	});
 
@@ -89,6 +68,6 @@ exports.down = async ( knex ) => {
 		dbTableNames.country,
 		dbTableNames.state,
 		dbTableNames.shape,
-		dbTableNames.location
-	].map( tableName  => knex.schema.dropTable( tableName )));
+		dbTableNames.inventory_location
+	].map( tableName  => knex.schema.dropTableIfExists( tableName )));
 };
