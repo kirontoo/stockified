@@ -30,13 +30,16 @@ exports.seed = async ( knex ) => {
 		.insert( user )
 		.returning( '*' );
 
-	console.log( 'User created:', {
-		password
-	}, createdUser );
+	if ( process.env.NODE_ENV !== 'test' ) {
+		console.log( 'User created:', {
+			password,
+		}, createdUser );
+	}
 
 	await knex( dbTableNames.country )
 		.insert( countries );
 
+	// TODO: seed with actual state data
 	await knex( dbTableNames.state )
 		.insert([{
 			name: 'CA',
