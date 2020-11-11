@@ -9,8 +9,8 @@
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-		"test": "jest",
-		"watch-tests": "jest --watch"
+    "test": "jest",
+    "watch-tests": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "helmet": "^4.1.1",
     "knex": "^0.21.6",
     "morgan": "^1.10.0",
+    "objection": "^2.2.3",
     "pg": "^8.4.1"
   },
   "devDependencies": {
