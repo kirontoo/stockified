@@ -8,8 +8,10 @@ function errorHandler( error, req, res, next ) {
 	const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
 	res.status( statusCode );
 	res.json({
+		status: statusCode,
 		message: error.message,
-		stack: process.env.NODE_ENV === 'production' ? 'production stack' : error.stack
+		stack: process.env.NODE_ENV === 'production' ? 'production stack' : error.stack,
+		errors: error.errors || undefined
 	});
 }
 
