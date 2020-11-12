@@ -12,5 +12,4 @@ class User extends Model {
 		return userSchema;
 	}
 }
-
 module.exports = User;

@@ -15,4 +15,6 @@ function errorHandler( error, req, res, next ) {
 	});
 }
 
+// TODO: add middleware to validate jwt tokens
+
 module.exports = { notFound, errorHandler };
