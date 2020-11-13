@@ -45,6 +45,7 @@ exports.up = async (knex) => {
 		table.float( 'longitude' ).notNullable();
 		addIdReference( table, dbTableNames.state, false );
 		addIdReference( table, dbTableNames.country );
+		addDefaultColumns( table );
 	});
 
 	await knex.schema.createTable( dbTableNames.company, ( table ) => {
@@ -55,6 +56,7 @@ exports.up = async (knex) => {
 		addUrlColumn( table, 'website_url' )
 		addEmailColumn( table, 'email');
 		addIdReference(table, 'address');
+		addDefaultColumns( table );
 	});
 };
 
