@@ -41,11 +41,20 @@ exports.up = async (knex) => {
 		table.string( 'street_address_2', 50 );
 		table.string( 'city', 50 ).notNullable();
 		table.string( 'zipcode', 15 ).notNullable();
-		table.float( 'latitude' ).notNullable();
-		table.float( 'longitude' ).notNullable();
+		table.double( 'latitude' );
+		table.double( 'longitude' );
 		addIdReference( table, dbTableNames.state, false );
 		addIdReference( table, dbTableNames.country );
 		addDefaultColumns( table );
+
+		table.unique([
+			'street_address_1',
+			'street_address_2',
+			'city',
+			'zipcode',
+			'country_id',
+			'state_id'
+		]);
 	});
 
 	await knex.schema.createTable( dbTableNames.company, ( table ) => {

@@ -9,6 +9,7 @@ const dbTableNames = require( '../../src/constants/dbTableNames' );
 exports.up = async ( knex ) => {
 	await knex.schema.table( dbTableNames.state, ( table ) => {
 		table.string( 'code' );
+		addIdReference( table, dbTableNames.country );
 	});
 
 	await knex.schema.table( dbTableNames.country, ( table ) => {
