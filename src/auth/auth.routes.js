@@ -54,13 +54,13 @@ router.post( '/signin', async ( req, res, next ) => {
 		const user = await User.query().where({ email }).first();
 
 		if ( !user ) { 
-			res.status( 401 );
+			res.status( 403 );
 			throw new Error( errorMessages.invalidLogin );
 		}
 
 		const isValidPassword = await bcrypt.compare( password, user.password );
 		if ( !isValidPassword ) {
-			res.status( 401 );
+			res.status( 403 );
 			throw new Error( errorMessages.invalidLogin );
 		}
 
