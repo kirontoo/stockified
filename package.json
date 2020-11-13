@@ -1,7 +1,7 @@
 {
   "name": "stockified-api",
   "version": "1.0.0",
-  "description": "<!-- PROJECT SHIELDS --> [![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url] [![LinkedIn][linkedin-shield]][linkedin-url]",
+  "description": "An api for a home inventory database",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
