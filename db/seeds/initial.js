@@ -10,6 +10,7 @@ const bcrypt =require( 'bcrypt' );
 const orderedTableNames = require( '../../src/constants/orderedTableNames' );
 const dbTableNames = require( '../../src/constants/dbTableNames' );
 const countries = require( '../../src/constants/countries' );
+const us_states = require( '../../src/constants/us_states' );
 
 exports.seed = async ( knex ) => {
 	await orderedTableNames.reduce( async ( promise, table_name ) => {
@@ -36,17 +37,10 @@ exports.seed = async ( knex ) => {
 		}, createdUser );
 	}
 
-	await knex( dbTableNames.country )
-		.insert( countries );
+	const insertedCountries = await knex( dbTableNames.country )
+		.insert( countries, '*' );
 
-	// TODO: seed with actual state data
-	await knex( dbTableNames.state )
-		.insert([{
-			name: 'CA',
-		},{
-			name: 'AZ'
-		}, {
-			name: 'WA'
-		}]);
-};
-
+	const usa = insertedCountries.find(( country ) => country.code === 'US' );
+	us_states.forEach( ( state ) => { state.country_id = usa.id });
+	await knex( dbTableNames.state ).insert( us_states );
+}
