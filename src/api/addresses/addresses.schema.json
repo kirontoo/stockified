@@ -7,9 +7,7 @@
         "street_address_1",
         "city",
         "zipcode",
-        "country_id",
-        "latitude",
-        "longitude"
+        "country_id"
     ],
     "additionalProperties": false,
     "properties": {

@@ -15,20 +15,18 @@ describe( 'GET /api/v1/addresses', () => {
 		const address = {
 			street_address_1: '1234 walker st.',
 			city: 'santa ana',
-			zipcode: '82358-7345'
+			zipcode: '82358-7345',
+			state_id: 5,
+			country_id: 236
 		};
 
-		try {
-			const response = await supertest( app )
-				.post( '/api/v1/addresses' )
-				.send( address )
-				.expect( 'Content-Type', /json/ )
-				.expect( 200 );
-			expect( response.body ).toEqual( address );
-			console.log( response.body )
-		} catch ( error ) {
-			console.log( error.messsage );
-		}
+		const response = await supertest( app )
+			.post( '/api/v1/addresses' )
+			.send( address )
+			.expect( 'Content-Type', /json/ )
+			.expect( 200 );
+
+		expect( response.body ).toEqual( address );
 	});
 
 	it( 'should fail to insert an address', async () => {
