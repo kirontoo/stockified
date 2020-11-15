@@ -8,9 +8,10 @@
     "dev": "nodemon src/index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
+		"setup": "knex migrate:rollback && knex migrate:latest && seed:run",
     "seed": "knex seed:run",
     "test": "jest",
-    "watch-tests": "jest --watch"
+    "watch": "jest --watch"
   },
   "repository": {
     "type": "git",
