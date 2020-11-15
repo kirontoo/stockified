@@ -1,6 +1,11 @@
 const errorTypes = {
-	ValidationError: 422
+	ValidationError: 422,
+	UniqueViolationError: 409
 };
+
+const errorMessages = {
+	UniqueViolationError: 'This is a duplicate entry. Must be unique.'
+}
 
 function notFound( req, res, next ) {
 	const error = new Error( `Not found - ${req.originalUrl}` );
@@ -14,7 +19,7 @@ function errorHandler( error, req, res, next ) {
 
 	res.json({
 		status: statusCode,
-		message: error.message,
+		message: errorMessages[ error.name ] || error.message,
 		stack: process.env.NODE_ENV === 'production' ? 'production stack' : error.stack,
 		errors: error.errors || undefined
 	});
