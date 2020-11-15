@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.get( '/', async ( req, res ) => {
 	const states = await queries.find();
-	console.log( states );
 	res.json( states );
 });
 

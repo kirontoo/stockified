@@ -4,12 +4,12 @@
   "description": "An api for a home inventory database",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "migrate": "knex migrate:latest",
+		"reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "rollback": "knex migrate:rollback",
-		"reset-db": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "seed": "knex seed:run",
+    "start": "node src/index.js",
     "test": "jest",
     "watch": "jest --watch"
   },
