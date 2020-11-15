@@ -49,12 +49,15 @@ exports.up = async (knex) => {
 
 		table.unique([
 			'street_address_1',
-			'street_address_2',
 			'city',
 			'zipcode',
 			'country_id',
 			'state_id'
 		]);
+
+		// needs to be separate to prevent duplicate addresses
+		// with the same street_address_1
+		table.unique( 'street_address_2' );
 	});
 
 	await knex.schema.createTable( dbTableNames.company, ( table ) => {
