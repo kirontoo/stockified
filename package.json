@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-		"setup": "knex migrate:rollback && knex migrate:latest && seed:run",
+		"reset-db": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "seed": "knex seed:run",
     "test": "jest",
     "watch": "jest --watch"
