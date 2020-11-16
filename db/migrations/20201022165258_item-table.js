@@ -36,7 +36,7 @@ exports.up = async ( knex ) => {
 		addIdReference( table, dbTableNames.user );
 		addIdReference( table, dbTableNames.item_type );
 		addIdReference( table, dbTableNames.company );
-		addIdReference( table, dbTableNames.size );
+		addIdReference( table, dbTableNames.size, false );
 		addDefaultColumns( table );
 	});
 
