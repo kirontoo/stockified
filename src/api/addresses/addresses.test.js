@@ -2,18 +2,19 @@ const supertest = require( 'supertest' );
 const app = require( '../../app' );
 
 describe( 'GET /api/v1/addresses', () => {
-	it( 'should respond with a message', async () => {
+	it( 'should respond with a message', async ( done ) => {
 		const response = await supertest( app )
 			.get( '/api/v1/addresses' )
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
 
-		expect( response.body.length ).toEqual( 0 );
+		expect( response.body ).toBeInstanceOf( Array );
+		done();
 	});
 });
 
 describe( 'POST /api/v1/addresses', () => {
-	it( 'should insert a address', async () => {
+	it( 'should insert a address', async ( done ) => {
 		const address = {
 			street_address_1: '1234 walker st.',
 			city: 'santa ana',
@@ -30,12 +31,12 @@ describe( 'POST /api/v1/addresses', () => {
 
 		expect( response.body ).toEqual( 
 			expect.objectContaining({
-				...address,
-				id: 1
+				...address
 			}));
+		done();
 	});
 
-	it( 'should fail to insert an address', async () => {
+	it( 'should fail to insert an address', async ( done ) => {
 		const address = {
 			street_address_1: '1234 walker st.',
 			city: 'santa ana',
@@ -47,9 +48,11 @@ describe( 'POST /api/v1/addresses', () => {
 			.send( address )
 			.expect( 'Content-Type', /json/ )
 			.expect( 422 );
+
+		done();
 	});
 
-	it( 'should return a validation error on duplicate address', async () => {
+	it( 'should return a validation error on duplicate address', async ( done ) => {
 		const address = {
 			street_address_1: '1234 walker st.',
 			city: 'santa ana',
@@ -63,5 +66,7 @@ describe( 'POST /api/v1/addresses', () => {
 			.send( address )
 			.expect( 'Content-Type', /json/ )
 			.expect( 409 );
+
+		done();
 	});
 });
