@@ -29,7 +29,7 @@ exports.up = async ( knex ) => {
 
 	await knex.schema.createTable( dbTableNames.item, ( table ) => {
 		table.increments();
-		table.string( 'name' );
+		table.string( 'name' ).notNullable();
 		table.text( 'description' );
 		table.string( 'sku', 42 );
 
