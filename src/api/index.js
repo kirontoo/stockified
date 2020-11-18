@@ -5,6 +5,8 @@ const router = express.Router();
 const states = require( './states/states.routes' );
 const users = require( './users/users.routes' );
 const addresses = require( './addresses/addresses.routes' );
+const companies = require( './companies/companies.routes' );
+const items = require( './items/items.routes' );
 const auth = require( '../auth/auth.routes' );
 
 router.get( '/', ( req, res ) => {
@@ -16,6 +18,8 @@ router.get( '/', ( req, res ) => {
 router.use( '/states', states );
 router.use( '/users', users );
 router.use( '/addresses', addresses );
+router.use( '/companies', companies );
+router.use( '/items', items );
 router.use( '/auth', auth );
 
 module.exports = router;
