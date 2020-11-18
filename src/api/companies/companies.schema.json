@@ -4,6 +4,8 @@
 	"title": "Company",
 	"description": "A Company",
 	"required": [
+		"name",
+		"address_id"
 	],
 	"additionalProperties": false,
 	"properties": {
@@ -30,7 +32,7 @@
 		"website_url": {
 			"$id": "#/properties/website_url",
 			"type": "string",
-			"title": "The website url of the user."
+			"title": "The website url of the company."
 		},
 		"email": {
 			"$id": "#/properties/email",
@@ -40,7 +42,7 @@
 		"address_id": {
 			"$id": "#/properties/address_id",
 			"type": "number",
-			"title": "The id of the address."
+			"title": "The id of the company address."
 		}
 	}
 }

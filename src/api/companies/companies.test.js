@@ -32,7 +32,7 @@ describe( 'POST /api/v1/companies', () => {
 			.post( '/api/v1/companies' )
 			.send( company )
 			.expect( 'Content-Type', /json/ )
-			.expect( 500 );
+			.expect( 409 );
 	});
 
 	it( 'should add a new company to the DB', async () => {
