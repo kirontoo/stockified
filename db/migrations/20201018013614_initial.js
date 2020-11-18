@@ -61,7 +61,7 @@ exports.up = async (knex) => {
 	});
 
 	await knex.schema.createTable( dbTableNames.company, ( table ) => {
-		table.increments().notNullable();
+		table.increments().notNullable().unique();
 		table.string( 'name' ).notNullable();
 		addUrlColumn( table, 'logo_url' )
 		table.string( 'description', 10000 );
