@@ -7,17 +7,12 @@
 const Knex = require( 'knex' );
 const crypto = require( 'crypto' );
 const bcrypt =require( 'bcrypt' );
-const orderedTableNames = require( '../../src/constants/orderedTableNames' );
 const dbTableNames = require( '../../src/constants/dbTableNames' );
 const countries = require( '../../src/constants/countries' );
 const us_states = require( '../../src/constants/us_states' );
 
 exports.seed = async ( knex ) => {
-	await orderedTableNames.reduce( async ( promise, table_name ) => {
-		await promise;
-		console.log( 'Clearing', table_name );
-		return knex( table_name ).del();
-	}, Promise.resolve());
+	await Promise.all( Object.keys( dbTableNames ).map( ( name ) => knex(name).del() ));
 
 	const password = crypto.randomBytes( 15 ).toString( 'hex' );
 
