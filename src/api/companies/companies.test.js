@@ -54,5 +54,21 @@ describe( 'POST /api/v1/companies', () => {
 
 		expect( response.body ).toMatchObject( company );
 	});
+});
 
+describe( 'PATCH /api/v1/companies/:id', () => {
+	it( '', async () => {
+		const id = 3;
+		const updatedCompany = {
+			description: "An American grocery store that originated from California."	
+		};
+
+		const response = await supertest( app )
+			.patch( `/api/v1/companies/${ id }` )
+			.send( updatedCompany )
+			.expect( 'Content-Type', /json/ )
+			.expect( 200 );
+
+		expect( response.body.description ).toEqual( updatedCompany.description );
+	});
 });

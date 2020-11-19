@@ -27,5 +27,18 @@ router.post( '/', async ( req, res, next ) => {
 	}
 });
 
+
+router.patch( '/:id', async ( req, res, next ) => {
+	try {
+		const company = await Company
+			.query()
+			.patchAndFetchById( req.params.id, req.body)
+
+		return res.json( company );
+	} catch( error ) {
+		next( error );
+	}
+});
+
 module.exports = router;
 
