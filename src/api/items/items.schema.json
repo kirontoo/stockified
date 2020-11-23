@@ -28,17 +28,17 @@
 			},
 			"item_type_id": {
 				"$id": "#/properties/item_type_id",
-				"type": "number",
+				"type": "integer",
 				"title": "The id of the item type."
 			},
 			"user_id": {
 				"$id": "#/properties/user_id",
-				"type": "number",
+				"type": "integer",
 				"title": "The id of the user."
 			},
 			"company_id": {
 				"$id": "#/properties/company_id",
-				"type": "number",
+				"type": "integer",
 				"title": "The id of the company."
 			}
 		}

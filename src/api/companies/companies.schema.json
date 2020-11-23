@@ -41,7 +41,7 @@
 		},
 		"address_id": {
 			"$id": "#/properties/address_id",
-			"type": "number",
+			"type": "integer",
 			"title": "The id of the company address."
 		}
 	}

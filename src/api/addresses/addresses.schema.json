@@ -48,12 +48,12 @@
         },
         "state_id": {
             "$id": "#/properties/state_id",
-            "type": "number",
+            "type": "integer",
             "title": "The id of the state."
         },
         "country_id": {
             "$id": "#/properties/country_id",
-            "type": "number",
+            "type": "integer",
             "title": "The id of the country."
         }
     }
