@@ -35,7 +35,7 @@ exports.up = async ( knex ) => {
 
 		addIdReference( table, dbTableNames.user );
 		addIdReference( table, dbTableNames.item_type );
-		addIdReference( table, dbTableNames.company );
+		addIdReference( table, dbTableNames.company, false );
 		addIdReference( table, dbTableNames.size, false );
 		addDefaultColumns( table );
 	});
@@ -46,7 +46,7 @@ exports.up = async ( knex ) => {
 		table.datetime( 'expiration_date' );
 		table.datetime( 'last_used' );
 		table.float( 'purchase_price' ).defaultTo( 0 );
-		table.float( 'msrp' ).notNullable().defaultTo( 0 );
+		table.float( 'msrp' ).defaultTo( 0 );
 
 		addIdReference( table, dbTableNames.company, false, 'retailer' );
 		addIdReference( table, dbTableNames.inventory_location );
