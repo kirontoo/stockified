@@ -6,7 +6,6 @@
 	"required": [
 		"name",
 		"item_type_id",
-		"company_id",
 		"user_id"
 		],
 		"additionalProperties": false,
