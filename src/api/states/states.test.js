@@ -4,7 +4,6 @@ const db = require( '../../db' );
 
 afterAll( () => db.destroy() );
 
-
 describe( 'GET /api/v1/states', () => {
 	it( 'should respond with an array of states', async ( done ) => {
 		const response = await supertest( app )
@@ -15,7 +14,9 @@ describe( 'GET /api/v1/states', () => {
 		expect( response.body.length ).toBeGreaterThan( 0 );
 		done();
  });
+});
 
+describe( 'GET /api/v1/states/:id', () => {
 	it( 'should respond with an individual state', async ( done ) => {
 		const response = await supertest( app )
 			.get( '/api/v1/states/1' )
@@ -35,4 +36,3 @@ describe( 'GET /api/v1/states', () => {
 		done();
 	});
 });
-

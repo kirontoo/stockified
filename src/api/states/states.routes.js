@@ -1,3 +1,7 @@
+/* 
+ * ROUTES: /api/v1/states
+ */
+
 const express = require( 'express' );
 const queries = require( './states.queries' );
 const router = express.Router();
