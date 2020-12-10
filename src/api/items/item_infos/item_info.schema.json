@@ -1,0 +1,63 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"title": "Item Info",
+	"description": "The Item Info",
+	"required": [
+		"user_id",
+		"item_id",
+		"purchase_date",
+		"inventory_location_id"
+		],
+		"additionalProperties": false,
+		"properties": {
+			"id": {
+				"$id": "#/properties/id",
+				"type": "integer",
+				"title": "The database ID of the item info."
+			},
+			"item_id": {
+				"$id": "#/properties/id",
+				"type": "integer",
+				"title": "The database ID of the item it's associated with."
+			},
+			"user_id": {
+				"$id": "#/properties/user_id",
+				"type": "integer",
+				"title": "The id of the user."
+			},
+			"retailer_id": {
+				"$id": "#/properties/retailer",
+				"type": "integer",
+				"title": "The id number of the retailer."
+			},
+			"msrp": {
+				"$id": "#/properties/msrp",
+				"type": "number",
+				"title": "The msrp of the item."
+			},
+			"purchase_date": {
+				"$id": "#/properties/purchase_date",
+				"type": "string",
+				"format": "date",
+				"title": "The purchase date"
+			},
+			"inventory_location_id": {
+				"$id": "#/properties/inventory_location_id",
+				"type": "integer",
+				"title": "The id of inventory location."
+			},
+			"last_used": {
+				"$id": "#/properties/last_used",
+				"type": "string",
+				"format": "date",
+				"title": "The last time this item was used."
+			},
+			"expiration_date": {
+				"$id": "#/properties/expiration_date",
+				"type": "string",
+				"format": "date",
+				"title": "The item's expiration date."
+			}
+		}
+}
