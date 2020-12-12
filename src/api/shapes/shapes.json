@@ -1,0 +1,22 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"title": "Shape",
+	"description": "Item Shape",
+	"required": [
+		"name"
+		],
+	"additionalProperties": false,
+	"properties": {
+		"id": {
+			"$id": "#/properties/id",
+			"type": "integer",
+			"title": "The database ID of the shape."
+		},
+		"name": {
+			"$id": "#/properties/name",
+			"type": "integer",
+			"title": "The name of the shape."
+		}
+	}
+}
