@@ -15,7 +15,7 @@
 		},
 		"name": {
 			"$id": "#/properties/name",
-			"type": "integer",
+			"type": "string",
 			"title": "The name of the shape."
 		}
 	}
