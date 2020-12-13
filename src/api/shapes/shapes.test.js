@@ -12,7 +12,7 @@ describe( 'GET /api/v1/shapes', () => {
 			.expect( 200 );
 
 		expect( response.body ).toBeInstanceOf( Array );
-		expect( response.body.length ).toBeGreaterThanOrEqual( 0 );
+		expect( response.body.length ).toBeGreaterThanOrEqual( 10 );
 		done();
 	});
 
@@ -36,13 +36,14 @@ describe( 'POST /api/v1/shapes', () => {
 	it( 'should create a new shape', async ( done ) => {
 		const response = await supertest( app )
 			.post( '/api/v1/shapes' )
-			.send({ name: "object unknown" })
+			.send({ id: 15, name: "object unknown" })
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
 
 		expect( response.body ).toEqual(
 			expect.objectContaining({
-				name: "object unknown"
+				name: "object unknown",
+				id: 15
 		}));
 
 		done();
@@ -52,7 +53,7 @@ describe( 'POST /api/v1/shapes', () => {
 describe( 'PATCH /api/v1/shapes/:id', () => {
 	it( 'should update a shape', async ( done ) => {
 		const response = await supertest( app )
-			.patch( '/api/v1/shapes/1' )
+			.patch( '/api/v1/shapes/15' )
 			.send({ name: "hello" })
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
@@ -60,7 +61,16 @@ describe( 'PATCH /api/v1/shapes/:id', () => {
 		expect( response.body ).toEqual(
 			expect.objectContaining({
 				name: "hello"
-		}));
+			}));
+
+		done();
+	});
+
+	it( 'should not be able to update predefined shapes', async ( done ) => {
+		const response = await supertest( app )
+			.get( '/api/v1/shapes/1' )
+			.expect( 'Content-Type', /json/ )
+			.expect( 405 );
 
 		done();
 	});
