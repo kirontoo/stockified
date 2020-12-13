@@ -8,11 +8,11 @@ const controller = require( './shapes.controller' );
 const router = express.Router();
 
 router.route( '/' )
-	.get( controller.getAllShapes  );
+	.get( controller.getAllShapes  )
+	.post( controller.createAShape );
 
 router.route( '/:id' )
 	.get( controller.getShapeById )
-	.post( controller.createAShape )
 	.patch( controller.updateAShape );
 
 module.exports = router;
