@@ -28,7 +28,34 @@ async function getShapeById ( req, res, next ) {
 	}
 }
 
+async function createAShape ( req, res, next ) {
+	try {
+		const shape = await Shape
+			.query()
+			.insert( req.body );
+
+		return res.json( shape );
+	} catch ( error ) {
+		next( error );
+	}
+}
+
+async function updateAShape ( req, res, next ) {
+	try {
+		const shape = await Shape.query().patchAndFetchById(
+			req.params.id,
+			req.body
+		);
+		
+		return res.json( shape );
+	} catch ( error ) {
+		next( error );
+	}
+}
+
 module.exports = {
 	getAllShapes,
-	getShapeById
+	getShapeById,
+	createAShape,
+	updateAShape
 };

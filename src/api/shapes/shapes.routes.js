@@ -11,7 +11,8 @@ router.route( '/' )
 	.get( controller.getAllShapes  );
 
 router.route( '/:id' )
-	.get( controller.getShapeById );
-
+	.get( controller.getShapeById )
+	.post( controller.createAShape )
+	.patch( controller.updateAShape );
 
 module.exports = router;
