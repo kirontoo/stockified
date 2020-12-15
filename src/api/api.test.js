@@ -8,7 +8,7 @@ describe( 'GET /api/v1', () => {
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
 
-		expect( response.body.message ).toEqual( 'Home Inventory API' );
+		expect( response.body.message ).toEqual( 'Stockified API' );
 		done();
 	});
 });
