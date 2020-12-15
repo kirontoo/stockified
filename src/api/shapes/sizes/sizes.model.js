@@ -1,5 +1,5 @@
 const { Model } = require( 'objection' );
-const dbTableNames = require( '../../constants/dbTableNames' );
+const dbTableNames = require( '../../../constants/dbTableNames' );
 const sizesSchema = require( './sizes.schema.json' );
 
 class Size extends Model {
