@@ -28,6 +28,9 @@ describe( 'GET /api/v1/shapes', () => {
 				name: "box"
 			}));
 
+		expect( response.body.sizes ).toBeInstanceOf( Array );
+		expect( response.body.sizes.length ).toBeGreaterThanOrEqual( 0 );
+
 		done();
 	});
 });
