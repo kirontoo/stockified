@@ -19,10 +19,10 @@ exports.up = async ( knex ) => {
 	await knex.schema.createTable( dbTableNames.size, ( table ) => {
 		table.increments();
 		table.string( 'name' ).notNullable();
-		table.integer( 'length' );
-		table.integer( 'width' );
-		table.integer( 'height' );
-		table.integer( 'volume' );
+		table.double( 'length' );
+		table.double( 'width' );
+		table.double( 'height' );
+		table.double( 'volume' );
 		addIdReference( table, dbTableNames.shape );
 		addDefaultColumns( table );
 	});
