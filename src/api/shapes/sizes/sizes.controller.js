@@ -30,8 +30,13 @@ async function getAllSizes( req, res, next ) {
 
 async function updateASize( req, res, next ) {
 	try {
+		req.params.id = Number( req.params.id )
+		const size = await Size.query().patchAndFetchById(
+			req.params.id,
+			req.body
+		);
 	
-		return res.status(500).send( "WORKING ON IT!" );
+		return res.json( size );
 	} catch ( error ) {
 		next( error );
 	}
