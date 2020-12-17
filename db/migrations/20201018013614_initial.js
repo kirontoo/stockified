@@ -89,6 +89,7 @@ exports.down = async ( knex ) => {
 		dbTableNames.country,
 		dbTableNames.state,
 		dbTableNames.shape,
+		dbTableNames.measurement_unit,
 		dbTableNames.inventory_location
 	].map( tableName  => knex.schema.dropTableIfExists( tableName )));
 };
