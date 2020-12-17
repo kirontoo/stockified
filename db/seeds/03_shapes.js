@@ -21,6 +21,7 @@ exports.seed = async ( knex ) => {
 		width: 2,
 		height: 2,
 		volume: 8
+		measurement_unit_id: 1
 	});
 };
 

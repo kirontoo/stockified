@@ -32,10 +32,24 @@ exports.seed = async ( knex ) => {
 		}, createdUser );
 	}
 
+	// populate countries
 	const insertedCountries = await knex( dbTableNames.country )
 		.insert( countries, '*' );
-
 	const usa = insertedCountries.find(( country ) => country.code === 'US' );
+
+	// populate states
 	us_states.forEach( ( state ) => { state.country_id = usa.id });
 	await knex( dbTableNames.state ).insert( us_states );
+
+	// populate unit of measuerments
+	const unitOfMeasurements = [
+		{ name: "millimeter", abbreviation: "mm" },
+		{ name: "centimeter", abbreviation: "cm" },
+		{ name: "meter", abbreviation: "m" },
+		{ name: "inch", abbreviation: "in" },
+		{ name: "foot", abbreviation: "ft" },
+		{ name: "yard", abbreviation: "yd" },
+	];
+
+	await knex( dbTableNames.measurement_unit ).insert( unitOfMeasurements );
 }
