@@ -5,7 +5,8 @@
 	"description": "The Item",
 	"required": [
 		"name",
-		"shape_id"
+		"shape_id",
+		"measurement_unit_id"
 	],
 	"additionalProperties": false,
 	"properties": {
@@ -38,6 +39,11 @@
 			"$id": "#/properties/volume",
 			"type": "number",
 			"title": "The volume of the size."
+		},
+		"measurement_unit_id": {
+			"$id": "#/properties/measurement_unit_id",
+			"type": "integer",
+			"title": "The id number of the unit of measurement"
 		},
 		"shape_id": {
 			"$id": "#/properties/shape_id",
