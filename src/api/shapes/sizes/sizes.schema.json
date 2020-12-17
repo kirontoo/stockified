@@ -43,6 +43,11 @@
 			"$id": "#/properties/shape_id",
 			"type": "integer",
 			"title": "The id number of a shape"
+		},
+		"deleted_at": {
+			"$id": "#/properties/deleted_at",
+			"type": "string",
+			"title": "The name of the size."
 		}
 	}
 }

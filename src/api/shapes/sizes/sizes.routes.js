@@ -11,11 +11,11 @@ const router = express.Router({ mergeParams: true });
 router.route( '/' )
 	.get( controller.getAllSizes )
 	.post( controller.createASize )
-	.delete( controller.deleteASize );
 
 router.route( '/:id' )
 	.get( controller.getASizeById )
-	.patch( controller.updateASize );
+	.patch( controller.updateASize )
+	.delete( controller.deleteASize );
 
 module.exports = router;
 

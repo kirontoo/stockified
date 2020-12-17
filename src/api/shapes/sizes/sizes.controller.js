@@ -8,7 +8,7 @@ async function getASizeById( req, res, next ) {
 			.where( 'deleted_at', null )
 			.first();
 	
-		return res.json( size );
+		return ( size ) ? res.json( size ) : res.json([]);
 	} catch ( error ) {
 		next( error );
 	}
@@ -57,8 +57,20 @@ async function createASize( req, res, next ) {
 
 async function deleteASize( req, res, next ) {
 	try {
+		const time = Date.now()
+		const today = new Date( time );
+		const deleteDate = {
+			deleted_at: today.toISOString()
+		};
+
+		const size = await Size
+		.query()
+		.patchAndFetchById(
+			req.params.id,
+			deleteDate
+		);
 	
-		return res.status(500).send( "WORKING ON IT!" );
+		return res.send( size );
 	} catch ( error ) {
 		next( error );
 	}
@@ -70,4 +82,4 @@ module.exports = {
 	createASize,
 	updateASize,
 	deleteASize
-}
+};

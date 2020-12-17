@@ -1,6 +1,7 @@
 const supertest = require( 'supertest' );
 const app = require( '../../../app' );
 const db = require( '../../../db' );
+const Size = require( './sizes.model' );
 
 afterAll( () => db.destroy() );
 
@@ -73,3 +74,14 @@ describe( 'PATCH /api/v1/shapes/:shape_id/sizes/:id', () => {
 	});
 });
 
+describe( 'DELETE /api/v1/shapes/:shape_id/sizes/:id', () => {
+	it( 'should delete a size', async ( done ) => {
+		const response = await supertest( app )
+			.delete( '/api/v1/shapes/1/sizes/1' )
+			.expect( 'Content-Type', /json/ )
+			.expect( 200 );
+
+		expect( response.body.deleted_at ).not.toBeNull();
+		done();
+	});
+});
