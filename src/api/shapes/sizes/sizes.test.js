@@ -26,7 +26,15 @@ describe( 'GET /api/v1/shapes/:shape_id/sizes/:id', () => {
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
 
-		// TODO
+		expect( response.body ).toMatchObject({
+			name: "small",
+			shape_id: 1,
+			length: 2,
+			width: 2,
+			height: 2,
+			volume: 8
+		});
+
 		done();
 	});
 });

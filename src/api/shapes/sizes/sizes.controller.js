@@ -3,9 +3,11 @@ const Size = require( './sizes.model' );
 
 async function getASizeById( req, res, next ) {
 	try {
+		const shape_id = Number( req.params.shape_id );
 		const size = await Size
 			.query()
 			.where( 'deleted_at', null )
+			.andWhere( 'shape_id', shape_id )
 			.first();
 	
 		return ( size ) ? res.json( size ) : res.json([]);
