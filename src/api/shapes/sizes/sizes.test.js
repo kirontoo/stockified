@@ -32,7 +32,8 @@ describe( 'GET /api/v1/shapes/:shape_id/sizes/:id', () => {
 			length: 2,
 			width: 2,
 			height: 2,
-			volume: 8
+			volume: 8,
+			measurement_unit_id: 1
 		});
 
 		done();
@@ -47,6 +48,7 @@ describe( 'POST /api/v1/shapes/:shape_id/sizes/:id', () => {
 			width: 3,
 			height: 4,
 			volume: 24,
+			measurement_unit_id: 1
 		};
 
 		const response = await supertest( app )
