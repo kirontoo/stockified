@@ -11,5 +11,6 @@ module.exports = {
 	item: 'item',
 	related_item: 'related_item',
 	inventory_location: 'inventory_location',
-	item_image: 'item_image'
+	item_image: 'item_image',
+	measurement_unit: 'measurement_unit'
 }
