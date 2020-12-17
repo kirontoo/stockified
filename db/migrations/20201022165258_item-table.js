@@ -23,6 +23,7 @@ exports.up = async ( knex ) => {
 		table.double( 'width' );
 		table.double( 'height' );
 		table.double( 'volume' );
+		addIdReference( table, dbTableNames.measurement_unit );
 		addIdReference( table, dbTableNames.shape );
 		addDefaultColumns( table );
 	});

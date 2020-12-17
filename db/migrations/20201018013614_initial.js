@@ -35,6 +35,13 @@ exports.up = async (knex) => {
 		createNameTable( knex, dbTableNames.shape ),
 	]);
 
+	await knex.schema.createTable( dbTableNames.measurement_unit, ( table ) => {
+		table.increments().notNullable();
+		table.string( 'name', 254 ).notNullable().unique();
+		table.string( 'abbreviation', 5 ).notNullable().unique();
+		addDefaultColumns( table );
+	});
+
 	await knex.schema.createTable( dbTableNames.address , ( table ) => {
 		table.increments().notNullable();
 		table.string( 'street_address_1', 50 ).notNullable();
