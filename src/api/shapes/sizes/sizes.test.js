@@ -1,7 +1,6 @@
 const supertest = require( 'supertest' );
 const app = require( '../../../app' );
 const db = require( '../../../db' );
-const Size = require( './sizes.model' );
 
 afterAll( () => db.destroy() );
 
@@ -14,7 +13,6 @@ describe( 'GET /api/v1/shapes/:shape_id/sizes', () => {
 
 		expect( response.body ).toBeInstanceOf( Array );
 		expect( response.body.length ).toBeGreaterThanOrEqual( 0 );
-
 		done();
 	});
 });

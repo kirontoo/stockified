@@ -1,5 +1,6 @@
 const express = require( 'express' );
 const Size = require( './sizes.model' );
+const getCurrentDate = require ( '../../../lib/getCurrentDate' );
 
 async function getASizeById( req, res, next ) {
 	try {
