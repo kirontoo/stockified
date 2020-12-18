@@ -3,6 +3,7 @@ const router = express.Router();
 
 // api routes
 const shapes = require( './shapes/shapes.routes' );
+const item_types = require( './item_types/item_types.routes' );
 const states = require( './states/states.routes' );
 const countries = require( './countries/countries.routes' );
 const users = require( './users/users.routes' );
@@ -18,6 +19,7 @@ router.get( '/', ( req, res ) => {
 });
 
 router.use( '/shapes', shapes );
+router.use( '/item_types', item_types );
 router.use( '/states', states );
 router.use( '/countries', countries );
 router.use( '/users', users );

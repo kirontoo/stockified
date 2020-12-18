@@ -1,0 +1,22 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"title": "Item Type",
+	"description": "An item type",
+	"required": [
+		"name"
+	],
+	"additionalProperties": false,
+	"properties": {
+		"id": {
+			"$id": "#/properties/id",
+			"type": "integer",
+			"title": "The database ID of the item type."
+		},
+		"name": {
+			"$id": "#/properties/name",
+			"type": "string",
+			"title": "The name of the item type."
+		}
+	}
+}
