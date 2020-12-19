@@ -4,7 +4,7 @@ const itemTypeSchema = require( './item_types.schema.json' );
 
 class ItemType extends Model {
   static get tableName() {
-    return dbTableNames.ItemType;
+    return dbTableNames.item_type;
   }
 
 	static get jsonSchema() {
