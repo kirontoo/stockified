@@ -1,6 +1,6 @@
 const express = require( 'express' );
 const Size = require( './sizes.model' );
-const getCurrentDate = require ( '../../../lib/getCurrentDate' );
+const date = require ( '../../../lib/date' );
 
 async function getASizeById( req, res, next ) {
 	try {
@@ -60,20 +60,14 @@ async function createASize( req, res, next ) {
 
 async function deleteASize( req, res, next ) {
 	try {
-		const time = Date.now()
-		const today = new Date( time );
-		const deleteDate = {
-			deleted_at: today.toISOString()
-		};
-
 		const size = await Size
 		.query()
 		.patchAndFetchById(
 			req.params.id,
-			deleteDate
+			{ deleted_at: date.getCurrentDate() }
 		);
 	
-		return res.send( size );
+		return res.json( size );
 	} catch ( error ) {
 		next( error );
 	}
