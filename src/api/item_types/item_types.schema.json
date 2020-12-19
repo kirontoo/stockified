@@ -17,6 +17,11 @@
 			"$id": "#/properties/name",
 			"type": "string",
 			"title": "The name of the item type."
+		},
+		"deleted_at": {
+			"$id": "#/properties/deleted_at",
+			"type": "string",
+			"title": "The deleted at date"
 		}
 	}
 }
