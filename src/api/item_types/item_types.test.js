@@ -25,7 +25,7 @@ describe( 'GET /api/v1/item_types/:id', () => {
 			.expect( 200 );
 
 		expect( response.body ).toMatchObject({
-			name: 'Canned Goodes',
+			name: 'Canned Goods',
 			id: 1
 		});
 
@@ -73,9 +73,8 @@ describe( 'PATCH /api/v1/item_types/:id', () => {
 			.patch( '/api/v1/item_types/2' )
 			.send( { id: 3 } )
 			.expect( 'Content-Type', /json/ )
-			.expect( 200 );
+			.expect( 403 );
 
-		expect( response.body.id ).toEqual( 2 );
 		done();
 	});
 });
