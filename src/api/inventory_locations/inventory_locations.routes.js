@@ -3,12 +3,18 @@
 */
 
 const express = require( 'express' );
-const InventoryLocation = requinventory_locations.model' );
+const controller = require( './inventory_locations.controller' );
 
 const router = express.Router();
 
-router.route( '/' );
-router.route( '/:id' );
+router.route( '/' )
+	.get( controller.getAllInventoryLocations )
+	.post( controller.createAnInventoryLocation );
+
+router.route( '/:id' )
+	.get( controller.getAInventoryLocationById )
+	.patch( controller.updateAnInventoryLocation )
+	.delete( controller.deleteAnInventoryLocation );
 
 module.exports = router;
 
