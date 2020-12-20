@@ -1,5 +1,5 @@
 const express = require( 'express' );
-const InventoryLocation = require( './inventory_location.model' );
+const InventoryLocation = require( './inventory_locations.model' );
 
 async function getAllInventoryLocations( req, res, next ) {
 	try {
@@ -48,10 +48,10 @@ async function deleteAnInventoryLocation( req, res, next ) {
 }
 
 
-module.exports {
+module.exports = {
 	getAllInventoryLocations,
 	getAInventoryLocationById,
 	deleteAnInventoryLocation,
 	createAnInventoryLocation,
 	updateAnInventoryLocation
-}
+};

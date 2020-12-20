@@ -19,7 +19,7 @@ router.get( '/', ( req, res ) => {
 	});
 });
 
-router.use( '/inventory_locations, inventory_locations' )
+router.use( '/inventory_locations', inventory_locations )
 router.use( '/shapes', shapes );
 router.use( '/item_types', item_types );
 router.use( '/states', states );
