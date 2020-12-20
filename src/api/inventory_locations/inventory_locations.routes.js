@@ -3,7 +3,7 @@
 */
 
 const express = require( 'express' );
-const Tablename = require( './Tablename.model' );
+const InventoryLocation = requinventory_locations.model' );
 
 const router = express.Router();
 
