@@ -9,12 +9,12 @@ const router = express.Router();
 
 router.route( '/' )
 	.get( controller.getAllInventoryLocations )
-	.post( controller.createAnInventoryLocation );
+	.post( controller.createAInventoryLocation );
 
 router.route( '/:id' )
 	.get( controller.getAInventoryLocationById )
-	.patch( controller.updateAnInventoryLocation )
-	.delete( controller.deleteAnInventoryLocation );
+	.patch( controller.updateAInventoryLocation )
+	.delete( controller.deleteAInventoryLocation );
 
 module.exports = router;
 

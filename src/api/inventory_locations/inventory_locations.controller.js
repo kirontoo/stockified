@@ -3,8 +3,11 @@ const InventoryLocation = require( './inventory_locations.model' );
 
 async function getAllInventoryLocations( req, res, next ) {
 	try {
+		const inventoryLocations = await InventoryLocation
+		.query()
+		.where( 'deleted_at', null );
 
-		return res.status( 501 ).send( "WIP" )
+		return res.json( inventoryLocations );
 	} catch( error ) {
 		next( error );
 	}
@@ -20,7 +23,7 @@ async function getAInventoryLocationById( req, res, next ) {
 	}
 }
 
-async function updateAnInventoryLocation( req, res, next ) {
+async function updateAInventoryLocation( req, res, next ) {
 	try {
 
 		return res.status( 501 ).send( "WIP" )
@@ -29,7 +32,7 @@ async function updateAnInventoryLocation( req, res, next ) {
 	}
 }
 
-async function createAnInventoryLocation( req, res, next ) {
+async function createAInventoryLocation( req, res, next ) {
 	try {
 
 		return res.status( 501 ).send( "WIP" )
@@ -38,7 +41,7 @@ async function createAnInventoryLocation( req, res, next ) {
 	}
 }
 
-async function deleteAnInventoryLocation( req, res, next ) {
+async function deleteAInventoryLocation( req, res, next ) {
 	try {
 
 		return res.status( 501 ).send( "WIP" )
@@ -51,7 +54,7 @@ async function deleteAnInventoryLocation( req, res, next ) {
 module.exports = {
 	getAllInventoryLocations,
 	getAInventoryLocationById,
-	deleteAnInventoryLocation,
-	createAnInventoryLocation,
-	updateAnInventoryLocation
+	deleteAnInventoryLocation: deleteAInventoryLocation,
+	createAnInventoryLocation: createAInventoryLocation,
+	updateAnInventoryLocation: updateAInventoryLocation
 };
