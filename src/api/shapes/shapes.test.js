@@ -73,8 +73,9 @@ describe( 'PATCH /api/v1/shapes/:id', () => {
 		const response = await supertest( app )
 			.get( '/api/v1/shapes/1' )
 			.expect( 'Content-Type', /json/ )
-			.expect( 405 );
+			.expect( 400 );
 
+		expect( response.body.id ).toEqual( 1 );
 		done();
 	});
 });
