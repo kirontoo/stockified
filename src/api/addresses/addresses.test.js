@@ -73,3 +73,23 @@ describe( 'POST /api/v1/addresses', () => {
 		done();
 	});
 });
+
+describe( 'PATCH /api/v1/addresses/:id', () => {
+	it( 'should update an address', async ( done ) => {
+		const address = {
+			street_address_1: '1234 knott st.',
+			city: 'irvine',
+			state_id: 8,
+			country_id: 236
+		};
+
+		const response = await supertest( app )
+			.patch( '/api/v1/addresses/:id' )
+			.send( address )
+			.expect( 'Content-Type', /json/ )
+			.expect( 200 );
+
+		expect( response.body ).toEqual( expect.objectContaining( address ));
+		done();
+	});
+});
