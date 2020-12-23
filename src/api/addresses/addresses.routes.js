@@ -12,4 +12,7 @@ router.route( '/' )
 	.get( controller.getAllAddresses )
 	.post( controller.createAAddress );
 
+router.route( '/:id' )
+	.patch( controller.updateAnAddress );
+
 module.exports = router;

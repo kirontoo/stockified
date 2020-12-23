@@ -1,5 +1,23 @@
 const Address = require( './addresses.model' );
 
+function transformData ( data ) {
+	// converts property values into a string, trims whitespace 
+	// and lowercases everything
+	[
+		'street_address_1',
+		'street_address_2',
+		'city',
+		'zipcode'
+	].forEach( ( prop ) => {
+		if ( data[ prop ] )
+			data[ prop ] = data[ prop ]
+				.toString()
+				.toLowerCase()
+				.trim();
+	});
+	return data;
+}
+
 async function getAllAddresses ( req, res, next ) {
 	try {
 		const addresses = await Address
@@ -14,18 +32,7 @@ async function getAllAddresses ( req, res, next ) {
 
 async function createAAddress ( req, res, next ) {
 	try {
-		[
-			'street_address_1',
-			'street_address_2',
-			'city',
-			'zipcode'
-		].forEach( ( prop ) => {
-			if ( req.body[ prop ] )
-				req.body[ prop ] = req.body[ prop ]
-					.toString()
-					.toLowerCase()
-					.trim();
-		});
+		const data = transformData( req.body )
 
 		const address = await Address
 			.query()
@@ -37,7 +44,25 @@ async function createAAddress ( req, res, next ) {
 	}
 }
 
+async function updateAnAddress ( req, res, next ) {
+	try {
+		if ( req.body["id"] && req.body["id"] != req.params.id ) { 
+			res.status( 403 );
+			throw new Error( "invalid request" );
+		}
+
+		const data = transformData( req.body );
+		const address = await Address
+			.query()
+			.patchAndFetchById( req.params.id , data );
+		return res.json( address );
+	} catch ( error ) {
+		next( error );
+	}
+}
+
 module.exports = {
 	getAllAddresses,
-	createAAddress
+	createAAddress,
+	updateAnAddress
 };

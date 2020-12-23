@@ -85,12 +85,21 @@ describe( 'PATCH /api/v1/addresses/:id', () => {
 		};
 
 		const response = await supertest( app )
-			.patch( '/api/v1/addresses/:id' )
+			.patch( '/api/v1/addresses/1' )
 			.send( address )
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
 
 		expect( response.body ).toEqual( expect.objectContaining( address ));
+		done();
+	});
+
+	it( 'should not be able to change the id', async ( done ) => {
+		const response = await supertest( app )
+			.patch( '/api/v1/addresses/1' )
+			.send({ id: 15 })
+			.expect( 'Content-Type', /json/ )
+			.expect( 403 );
 		done();
 	});
 });
