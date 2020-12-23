@@ -34,7 +34,6 @@ describe( 'GET /api/v1/inventory_locations/:id', () => {
 	});
 });
 
-
 describe( 'POST /api/v1/inventory_locations', () => {
 	const inventoryLocation = {
 		name: "Bathroom Cabinet"
@@ -72,9 +71,7 @@ describe( 'PATCH /api/v1/inventory_locations', () => {
 			.patch( '/api/v1/inventory_locations/1' )
 			.send({ id: 15 })
 			.expect( 'Content-Type', /json/ )
-			.expect( 400 );
-
-		expect( response.body.id ).toEqual( 1 );
+			.expect( 403 );
 		done();
 	});
 });
@@ -82,7 +79,7 @@ describe( 'PATCH /api/v1/inventory_locations', () => {
 describe( 'DELETE /api/v1/inventory_locations', () => {
 	it( 'should delete a inventory location', async ( done ) => {
 		const response = await supertest( app )
-			.get( '/api/v1/inventory_locations/1' )
+			.delete( '/api/v1/inventory_locations/1' )
 			.expect( 'Content-Type', /json/ )
 			.expect( 200 );
 
