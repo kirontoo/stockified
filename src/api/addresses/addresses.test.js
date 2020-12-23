@@ -12,6 +12,7 @@ describe( 'GET /api/v1/addresses', () => {
 			.expect( 200 );
 
 		expect( response.body ).toBeInstanceOf( Array );
+		expect( response.body.length ).toBeGreaterThanOrEqual( 0 );
 		done();
 	});
 });
