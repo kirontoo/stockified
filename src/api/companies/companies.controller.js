@@ -55,6 +55,7 @@ async function deleteACompany ( req, res, next ) {
 		next( error );
 	}
 }
+
 module.exports = {
 	getAllCompanies,
 	createACompany,

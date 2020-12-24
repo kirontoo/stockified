@@ -8,10 +8,10 @@ const controller = require( './companies.controller' );
 const router = express.Router();
 
 router.route( '/' )
-	.get( controller.getAllCompanies );
+	.get( controller.getAllCompanies )
+	.post( controller.createACompany );
 
 router.route( '/:id' )
-	.post( controller.createACompany )
 	.patch( controller.updateACompany )
 	.delete( controller.deleteACompany );
 

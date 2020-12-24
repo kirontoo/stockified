@@ -43,6 +43,11 @@
 			"$id": "#/properties/address_id",
 			"type": "integer",
 			"title": "The id of the company address."
+		},
+		"deleted_at": {
+			"$id": "#/properties/deleted_at",
+			"type": "string",
+			"title": "The deleted at date of the company."
 		}
 	}
 }
