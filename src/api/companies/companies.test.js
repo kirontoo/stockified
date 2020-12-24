@@ -60,7 +60,7 @@ describe( 'POST /api/v1/companies', () => {
 });
 
 describe( 'PATCH /api/v1/companies/:id', () => {
-	it( '', async () => {
+	it( 'should update a company', async () => {
 		const id = 3;
 		const updatedCompany = {
 			description: "An American grocery store that originated from California."	
@@ -73,5 +73,27 @@ describe( 'PATCH /api/v1/companies/:id', () => {
 			.expect( 200 );
 
 		expect( response.body.description ).toEqual( updatedCompany.description );
+	});
+
+	it( 'should not change the id number', async ( done ) => {
+		const response = await supertest( app )
+			.patch( '/api/v1/companies/1' )
+			.send({ id: 15 })
+			.expect( 'Content-Type', /json/ )
+			.expect( 403 );
+
+		done();
+	});
+});
+
+describe( 'DELETE /api/v1/companies/:id', () => {
+	it( '', async ( done ) => {
+		const response = await supertest( app )
+			.delete( '/api/v1/companies/1' )
+			.expect( 'Content-Type', /json/ )
+			.expect( 200 );
+
+		expect( response.body.deleted_at ).not.toBeNull();
+		done();
 	});
 });
