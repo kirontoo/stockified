@@ -3,7 +3,6 @@
 */
 
 const express = require( 'express' );
-const Item = require( './items.model' );
 const itemsController = require( './items.controller' );
 const itemInfosRouter = require( './item_infos/item_info.routes' );
 
