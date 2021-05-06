@@ -129,7 +129,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - kirontoo@gmail.com
 
-Project Link: [https://github.com/kirontoo/stockified](https://github.com/kirontoo/repo_name)
+Project Link: [https://github.com/kirontoo/stockified](https://github.com/kirontoo/stockified)
 
 
 
